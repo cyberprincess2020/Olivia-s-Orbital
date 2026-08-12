@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Olivia's Orbital</title>
 
   <meta name="mobile-web-app-capable" content="yes">
@@ -15,7 +16,14 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
     }
 
     body {
@@ -55,10 +63,21 @@
     .he-date {
       color: #38bdf8;
       font-size: 0.85rem;
-      margin-top: 4px;
-      letter-spacing: 0.4px;
+      margin-top: 6px;
+      text-transform: capitalize;
+      letter-spacing: 1px;
       font-weight: 700;
+      line-height: 1.5;
     }
+
+    .header-sub {
+      color: #64748b;
+      font-size: 0.7rem;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    /* NAVIGATION */
 
     .tab-nav {
       display: grid;
@@ -100,6 +119,939 @@
     .tab-btn .tab-icon {
       font-size: 1.1rem;
     }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      color: #f8fafc;
+      border: 1px solid #6366f1;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .tab-content {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* CARDS */
+
+    .card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .event-card {
+      background: linear-gradient(135deg, #1e1b4b, #0f172a);
+      border: 1px solid #4338ca;
+      border-radius: 16px;
+      padding: 18px 20px;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .event-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    .badge-active {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .event-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .event-date {
+      font-size: 0.8rem;
+      color: #c084fc;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .event-desc {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    /* TAGS */
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+
+    .sun-tag {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .moon-tag {
+      background: rgba(192, 132, 252, 0.15);
+      color: #c084fc;
+    }
+
+    .chart-tag {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+    }
+
+    .planet-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+    }
+
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .sub-info {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+
+    .info-box {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* SUN */
+
+    .sun-position {
+      margin: 18px 0;
+      padding: 20px;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 50% 0%,
+        rgba(245, 158, 11, 0.18),
+        transparent 60%),
+        #070a12;
+      border: 1px solid #1e293b;
+      text-align: center;
+    }
+
+    .zodiac-symbol-large {
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .degree-display {
+      color: #fbbf24;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* MOON */
+
+    .moon-visual-container {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 12px 0 20px 0;
+      background: #070a12;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid #1e293b;
+    }
+
+    .moon-phase-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #c084fc;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* PLANETS */
+
+    .grid-planets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+
+    .planet-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 210px;
+    }
+
+    .planet-name {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .planet-symbol {
+      font-size: 2rem;
+      margin: 2px 0;
+    }
+
+    .planet-sign {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 3px;
+    }
+
+    .planet-degree {
+      font-size: 0.72rem;
+      color: #818cf8;
+      margin-bottom: 10px;
+    }
+
+    .planet-implication {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      line-height: 1.35;
+      width: 100%;
+      text-align: left;
+      margin-top: auto;
+    }
+
+    /* BIRTH CHART */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 500px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .full-width {
+        grid-column: span 2;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .form-control {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #f8fafc;
+      font-size: 0.9rem;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-control:focus {
+      border-color: #c084fc;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #c084fc, #6366f1);
+      border: none;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3);
+      transition: transform 0.1s ease;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .big-three-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .big-three-box {
+      background: #070a12;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .big-three-label {
+      font-size: 0.65rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .big-three-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-top: 4px;
+    }
+
+    .chart-wheel-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+      background: #070a12;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid #1e293b;
+      overflow: hidden;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #475569;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .empty-state {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      color: #64748b;
+    }
+
+    @media (max-width: 450px) {
+      body {
+        padding: 18px 10px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .big-three-label {
+        font-size: 0.55rem;
+      }
+
+      .big-three-val {
+        font-size: 0.8rem;
+      }
+
+      .tab-btn {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <svg class="app-icon-svg" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f59e0b"/>
+        <stop offset="50%" stop-color="#c084fc"/>
+        <stop offset="100%" stop-color="#38bdf8"/>
+      </linearGradient>
+    </defs>
+
+    <rect
+      width="100"
+      height="100"
+      rx="22"
+      fill="#0f172a"
+      stroke="rgba(192,132,252,0.4)"
+      stroke-width="2"
+    />
+
+    <circle
+      cx="50"
+      cy="50"
+      r="32"
+      stroke="url(#iconGrad)"
+      stroke-width="2.5"
+      fill="none"
+      stroke-dasharray="6,3"
+    />
+
+    <circle
+      cx="50"
+      cy="50"
+      r="12"
+      fill="url(#iconGrad)"
+    />
+
+    <path
+      d="M 50 18 A 32 32 0 0 0 82 50 A 26 26 0 0 1 50 18 Z"
+      fill="#fef08a"
+      opacity="0.85"
+    />
+
+    <circle cx="28" cy="28" r="2" fill="#fff"/>
+    <circle cx="74" cy="72" r="1.5" fill="#fff"/>
+    <circle cx="24" cy="70" r="1.2" fill="#fff"/>
+  </svg>
+
+  <h1 id="mainHeading">Olivia's Orbital</h1>
+
+  <div id="heDate" class="he-date">---</div>
+
+  <div id="headerSub" class="header-sub">---</div>
+
+</header>
+
+
+<nav class="tab-nav">
+
+  <button class="tab-btn active" data-tab="tab-sun">
+    <span class="tab-icon">☀️</span>
+    <span>Sun</span>
+  </button>
+
+  <button class="tab-btn" data-tab="tab-moon">
+    <span class="tab-icon">🌙</span>
+    <span>Moon</span>
+  </button>
+
+  <button class="tab-btn" data-tab="tab-planets">
+    <span class="tab-icon">🪐</span>
+    <span>Planets</span>
+  </button>
+
+  <button class="tab-btn" data-tab="tab-events">
+    <span class="tab-icon">✨</span>
+    <span>Events</span>
+  </button>
+
+  <button class="tab-btn" data-tab="tab-chart">
+    <span class="tab-icon">📜</span>
+    <span>Chart</span>
+  </button>
+
+</nav>
+
+
+<!-- SUN -->
+
+<div id="tab-sun" class="tab-content active">
+
+  <article class="card">
+
+    <span class="tag sun-tag">Solar Transit</span>
+
+    <h2 id="sunName" class="card-title">---</h2>
+
+    <div id="sunDates" class="sub-info">---</div>
+
+    <div class="sun-position">
+
+      <div id="sunSymbol" class="zodiac-symbol-large">☀️</div>
+
+      <div id="sunDegree" class="degree-display">---</div>
+
+    </div>
+
+    <div class="info-box" id="sunEnergy">---</div>
+
+  </article>
+
+</div>
+
+
+<!-- MOON -->
+
+<div id="tab-moon" class="tab-content">
+
+  <article class="card">
+
+    <span class="tag moon-tag">Lunar Transit</span>
+
+    <h2 id="moonName" class="card-title">---</h2>
+
+    <div id="moonSubInfo" class="sub-info">---</div>
+
+    <div class="moon-visual-container">
+
+      <div id="moonGraphic"></div>
+
+      <div>
+
+        <div id="moonPhaseName" class="moon-phase-title">
+          ---
+        </div>
+
+        <div
+          id="moonPhasePct"
+          style="
+            font-size:0.95rem;
+            color:#f8fafc;
+            font-weight:700;
+            margin-top:2px;
+          "
+        >
+          ---
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="info-box" id="moonVibe">---</div>
+
+  </article>
+
+</div>
+
+
+<!-- PLANETS -->
+
+<div id="tab-planets" class="tab-content">
+
+  <div id="planetaryGrid" class="grid-planets"></div>
+
+</div>
+
+
+<!-- EVENTS -->
+
+<div id="tab-events" class="tab-content">
+
+  <div id="eventsFeed"></div>
+
+</div>
+
+
+<!-- BIRTH CHART -->
+
+<div id="tab-chart" class="tab-content">
+
+  <article class="card">
+
+    <span class="tag chart-tag">Natal Calculation</span>
+
+    <h2 class="card-title" id="chartProfileTitle">
+      Generate Birth Chart
+    </h2>
+
+    <div class="sub-info">
+      Enter exact birth details to plot your wheel chart & houses
+    </div>
+
+    <form id="chartForm" class="form-grid">
+
+      <div class="form-group full-width">
+        <label>Name / Profile</label>
+
+        <input
+          type="text"
+          id="birthName"
+          class="form-control"
+          placeholder="Olivia"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+
+        <label>Birth Date</label>
+
+        <input
+          type="date"
+          id="birthDate"
+          class="form-control"
+          required
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Birth Time</label>
+
+        <input
+          type="time"
+          id="birthTime"
+          class="form-control"
+          value="12:00"
+          required
+        >
+
+      </div>
+
+      <div class="form-group full-width">
+
+        <label>Birth City / Timezone Shift</label>
+
+        <select id="birthTz" class="form-control">
+
+          <option value="0">
+            UTC / GMT
+          </option>
+
+          <option value="-5">
+            EST / UTC-5
+          </option>
+
+          <option value="-6">
+            CST / UTC-6
+          </option>
+
+          <option value="-8">
+            PST / UTC-8
+          </option>
+
+          <option value="1">
+            CET / UTC+1
+          </option>
+
+          <option value="2">
+            EET / UTC+2
+          </option>
+
+          <option value="8">
+            AWST / UTC+8
+          </option>
+
+          <option value="10">
+            AEST / UTC+10
+          </option>
+
+        </select>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn-submit full-width"
+      >
+        Calculate & Save Birth Chart
+      </button>
+
+    </form>
+
+
+    <div id="chartResults" style="display:none;">
+
+      <div class="big-three-container">
+
+        <div class="big-three-box">
+
+          <div class="big-three-label">
+            ☀️ Sun Sign
+          </div>
+
+          <div id="b3Sun" class="big-three-val">
+            ---
+          </div>
+
+        </div>
+
+        <div class="big-three-box">
+
+          <div class="big-three-label">
+            🌙 Moon Sign
+          </div>
+
+          <div id="b3Moon" class="big-three-val">
+            ---
+          </div>
+
+        </div>
+
+        <div class="big-three-box">
+
+          <div class="big-three-label">
+            🌅 Ascendant
+          </div>
+
+          <div id="b3Asc" class="big-three-val">
+            ---
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="chart-wheel-box">
+
+        <div id="svgWheelContainer"></div>
+
+      </div>
+
+      <div class="info-box">
+
+        <div
+          style="
+            font-size:0.85rem;
+            font-weight:800;
+            color:#c084fc;
+            margin-bottom:8px;
+            text-transform:uppercase;
+          "
+        >
+          Planetary Placements & Whole Sign Houses
+        </div>
+
+        <div
+          id="natalPlacementsList"
+          style="
+            display:flex;
+            flex-direction:column;
+            gap:6px;
+            font-size:0.85rem;
+          "
+        ></div>
+
+      </div>
+
+    </div>
+
+  </article>
+
+</div>
+
+
+<footer>
+
+  <p>
+    Holocene Era Calendar (HE) • Automated Celestial Tracking
+  </p>
+
+</footer>
+
+
+<script>
+
+/* ============================================================
+   ZODIAC DATA
+   ============================================================ */
+
+const signsList = [
+
+  {
+    name: "Aries",
+    symbol: "♈",
+    energy:
+      "bold initiative, direct action, courage, and new beginnings."
+  },
+
+  {
+    name: "Taurus",
+    symbol: "♉",
+    energy:
+      "grounded stability, patience, sensuality, and tangible focus."
+  },
+
+  {
+    name: "Gemini",
+    symbol: "♊",
+    energy:
+      "curiosity, communication, fast thinking, and adaptability."
+  },
+
+  {
+    name: "Cancer",
+    symbol: "♋",
+    energy:
+      "emotional depth, protection, memory, intuition, and belonging."
+  },
+
+  {
+    name: "Leo",
+    symbol: "♌",
+    energy:
+      "creative self-expression, confidence, warmth, visibility, and play."
+  },
+
+  {
+    name: "Virgo",
+    symbol: "♍",
+    energy:
+      "practical refinement, discernment, analysis, craft, and service."
+  },
+
+  {
+    name: "Libra",
+    symbol: "♎",
+    energy:
+      "harmony, diplomacy, aesthetics, reciprocity, and relationship."
+  },
+
+  {
+    name: "Scorpio",
+    symbol: "♏",
+    energy:
+      "intensity, psychological depth, transformation, and instinct."
+  },
+
+  {
+    name: "Sagittarius",
+    symbol: "♐",
+    energy:
+      "expansion, exploration, optimism, meaning, and freedom."
+  },
+
+  {
+    name: "Capricorn",
+    symbol: "♑",
+    energy:
+      "discipline, structure, ambition, responsibility, and long-term goals."
+  },
+
+  {
+    name: "Aquarius",
+    symbol: "♒",
+    energy:
+      "innovation, independence, collective thinking, and unconventional ideas."
+  },
+
+  {
+    name: "Pisces",
+    symbol: "♓",
+    energy:
+      "imagination, empathy, intuition, permeability, and spiritual flow."
+  }
+
+];
+
+
+/* ============================================================
+   PLANET ARCHETYPES
+   ============================================================ */
+
+const planetData = {
+
+  Sun: {
+    symbol: "☉",
+    description:
+      "identity, vitality, creativity, and conscious self-expression"
+  },
+
+  Moon: {
+    symbol: "☽",
+    description:
+      "emotion, instinct, habits, memory, and immediate responses"
+  },
+
+  Mercury: {
+    symbol: "☿",
+    description:
+      "thinking, communication, perception, and information"
+  },
+
+  Venus: {
+    symbol: "♀",
+    description:
+      "love, attraction, aesthetics, pleasure, and values"
+  },
+
+  Mars: {
+    symbol: "♂",
+    description:
+      "drive, desire, courage, competition, and physical action"
+  },
+
+  Jupiter: {
+    symbol: "♃",
+    description:
+      "growth, optimism, meaning, wisdom, and expansion"
+  },
+
+  Saturn: {
+    symbol: "♄",
+    description:
+      "discipline, boundaries, responsibility, and maturation"
+  },
+
+  Uranus: {
+    symbol: "♅",
+    description:
+      "innovation, disruption, independence, and sudden change"
+  },
+
+  Neptune: {
+    symbol: "♆",
+    description:
+      "imagination, dreams, ideals, intuition, and dissolution"
+  },
+
+  Pluto: {
+    symbol: "♇",
+    description:
+      "transformation, power, psychology, death-and-renewal"
+  }
+
+};
+
+
+/* ============================================================
+   HELPER FUNCTIONS
+   ============================================================ */
+
+function normali    }
 
     .tab-btn.active {
       background: linear-gradient(135deg, #1e1b4b, #312e81);
