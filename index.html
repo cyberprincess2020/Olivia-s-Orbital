@@ -3136,20 +3136,22 @@ document
 
 
 /* =========================================================
-   START
+   START APP
 ========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  initialiseApp
-);
+/*
+   The script is already at the bottom of <body>, so all
+   HTML elements exist by the time this code runs.
+*/
+
+initialiseApp();
 
 
 /*
-   Keep the header and celestial data fresh.
+   Keep the celestial data fresh.
 
-   This means leaving the page open overnight will not
-   leave yesterday's header stuck on screen.
+   The Moon moves quickly, so we refresh the live
+   celestial information every 5 minutes.
 */
 
 setInterval(
@@ -3166,7 +3168,7 @@ setInterval(
     renderEvents();
 
   },
-  60 * 60 * 1000
+  5 * 60 * 1000
 );
 
 </script>
