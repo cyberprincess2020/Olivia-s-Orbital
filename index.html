@@ -1051,2136 +1051,792 @@ const planetData = {
    HELPER FUNCTIONS
    ============================================================ */
 
-function normali    }
+function normalizeDegrees(deg) {
 
-    .tab-btn.active {
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
-      color: #f8fafc;
-      border: 1px solid #6366f1;
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
-    }
+  deg %= 360;
 
-    .tab-content {
-      display: none;
-      width: 100%;
-      max-width: 800px;
-    }
+  if (deg < 0) deg += 360;
 
-    .tab-content.active {
-      display: block;
-    }
-
-    .card {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .event-card {
-      background: linear-gradient(135deg, #1e1b4b, #0f172a);
-      border: 1px solid #4338ca;
-      border-radius: 16px;
-      padding: 18px 20px;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .event-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 6px;
-    }
-
-    .badge-active {
-      background: #ef4444;
-      color: #ffffff;
-    }
-
-    .event-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #f8fafc;
-    }
-
-    .event-date {
-      font-size: 0.8rem;
-      color: #c084fc;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .event-desc {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      line-height: 1.4;
-    }
-
-    .grid-planets {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 14px;
-      width: 100%;
-    }
-
-    .planet-card {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 14px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .planet-name {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-    }
-
-    .planet-symbol {
-      font-size: 2rem;
-      margin: 2px 0;
-    }
-
-    .planet-sign {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 8px;
-    }
-
-    .planet-degree {
-      color: #c084fc;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .planet-implication {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 0.78rem;
-      color: #cbd5e1;
-      line-height: 1.35;
-      width: 100%;
-      text-align: left;
-      margin-top: auto;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      width: fit-content;
-      margin-bottom: 12px;
-    }
-
-    .sun-tag {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
-    }
-
-    .moon-tag {
-      background: rgba(192, 132, 252, 0.15);
-      color: #c084fc;
-    }
-
-    .chart-tag {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-    }
-
-    .card-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #f8fafc;
-    }
-
-    .sub-info {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-
-    .moon-visual-container {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin: 12px 0 20px 0;
-      background: #070a12;
-      padding: 16px;
-      border-radius: 14px;
-      border: 1px solid #1e293b;
-    }
-
-    .moon-phase-title {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #c084fc;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .info-box {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    @media (min-width: 500px) {
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .full-width {
-        grid-column: span 2;
-      }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .form-control {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 10px 12px;
-      color: #f8fafc;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .form-control:focus {
-      border-color: #c084fc;
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, #c084fc, #6366f1);
-      border: none;
-      color: #ffffff;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3);
-    }
-
-    .btn-submit:active {
-      transform: scale(0.98);
-    }
-
-    .big-three-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .big-three-box {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 12px 8px;
-      text-align: center;
-    }
-
-    .big-three-label {
-      font-size: 0.65rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .big-three-val {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #38bdf8;
-      margin-top: 4px;
-    }
-
-    .chart-wheel-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-      background: #070a12;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid #1e293b;
-      overflow: hidden;
-    }
-
-    footer {
-      margin-top: 40px;
-      color: #475569;
-      font-size: 0.75rem;
-      text-align: center;
-    }
-
-    .empty-state {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      color: #64748b;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-
-  <svg class="app-icon-svg" viewBox="0 0 100 100">
-    <defs>
-      <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#f59e0b"/>
-        <stop offset="50%" stop-color="#c084fc"/>
-        <stop offset="100%" stop-color="#38bdf8"/>
-      </linearGradient>
-    </defs>
-
-    <rect
-      width="100"
-      height="100"
-      rx="22"
-      fill="#0f172a"
-      stroke="rgba(192, 132, 252, 0.4)"
-      stroke-width="2"
-    />
-
-    <circle
-      cx="50"
-      cy="50"
-      r="32"
-      stroke="url(#iconGrad)"
-      stroke-width="2.5"
-      fill="none"
-      stroke-dasharray="6,3"
-    />
-
-    <circle
-      cx="50"
-      cy="50"
-      r="12"
-      fill="url(#iconGrad)"
-    />
-
-    <path
-      d="M 50 18 A 32 32 0 0 0 82 50 A 26 26 0 0 1 50 18 Z"
-      fill="#fef08a"
-      opacity="0.85"
-    />
-
-    <circle cx="28" cy="28" r="2" fill="#ffffff"/>
-    <circle cx="74" cy="72" r="1.5" fill="#ffffff"/>
-    <circle cx="24" cy="70" r="1.2" fill="#ffffff"/>
-  </svg>
-
-  <h1>Olivia's Orbital</h1>
-
-  <div id="heDate" class="he-date">
-    Loading celestial data...
-  </div>
-
-</header>
-
-
-<nav class="tab-nav">
-
-  <button class="tab-btn active" data-tab="tab-sun">
-    <span class="tab-icon">☀️</span>
-    <span>Sun</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-moon">
-    <span class="tab-icon">🌙</span>
-    <span>Moon</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-planets">
-    <span class="tab-icon">🪐</span>
-    <span>Planets</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-events">
-    <span class="tab-icon">✨</span>
-    <span>Events</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-chart">
-    <span class="tab-icon">📜</span>
-    <span>Chart</span>
-  </button>
-
-</nav>
-
-
-<!-- SUN -->
-
-<div id="tab-sun" class="tab-content active">
-
-  <article class="card">
-
-    <span class="tag sun-tag">Sun Season</span>
-
-    <h2 id="sunName" class="card-title">---</h2>
-
-    <div id="sunDates" class="sub-info">---</div>
-
-    <div class="info-box" id="sunEnergy">---</div>
-
-  </article>
-
-</div>
-
-
-<!-- MOON -->
-
-<div id="tab-moon" class="tab-content">
-
-  <article class="card">
-
-    <span class="tag moon-tag">Lunar Transit</span>
-
-    <h2 id="moonName" class="card-title">---</h2>
-
-    <div id="moonSubInfo" class="sub-info">---</div>
-
-    <div class="moon-visual-container">
-
-      <div id="moonGraphic"></div>
-
-      <div>
-
-        <div id="moonPhaseName" class="moon-phase-title">
-          ---
-        </div>
-
-        <div
-          id="moonPhasePct"
-          style="font-size:0.95rem;color:#f8fafc;font-weight:700;margin-top:2px;"
-        >
-          ---
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="info-box" id="moonVibe">---</div>
-
-  </article>
-
-</div>
-
-
-<!-- PLANETS -->
-
-<div id="tab-planets" class="tab-content">
-
-  <div id="planetaryGrid" class="grid-planets"></div>
-
-</div>
-
-
-<!-- EVENTS -->
-
-<div id="tab-events" class="tab-content">
-
-  <div id="eventsFeed"></div>
-
-</div>
-
-
-<!-- BIRTH CHART -->
-
-<div id="tab-chart" class="tab-content">
-
-  <article class="card">
-
-    <span class="tag chart-tag">Natal Calculation</span>
-
-    <h2 class="card-title" id="chartProfileTitle">
-      Generate Birth Chart
-    </h2>
-
-    <div class="sub-info">
-      Enter exact birth details to plot your wheel chart & houses
-    </div>
-
-    <form id="chartForm" class="form-grid">
-
-      <div class="form-group full-width">
-
-        <label>Name / Profile</label>
-
-        <input
-          type="text"
-          id="birthName"
-          class="form-control"
-          placeholder="Olivia"
-          required
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Birth Date</label>
-
-        <input
-          type="date"
-          id="birthDate"
-          class="form-control"
-          required
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Birth Time</label>
-
-        <input
-          type="time"
-          id="birthTime"
-          class="form-control"
-          value="12:00"
-          required
-        >
-
-      </div>
-
-      <div class="form-group full-width">
-
-        <label>Birth City / Timezone Shift</label>
-
-        <select id="birthTz" class="form-control">
-
-          <option value="0">
-            UTC / GMT (London, Western Europe)
-          </option>
-
-          <option value="-5">
-            EST / UTC-5 (New York, Miami, Toronto)
-          </option>
-
-          <option value="-6">
-            CST / UTC-6 (Chicago, Dallas, Mexico City)
-          </option>
-
-          <option value="-8">
-            PST / UTC-8 (Los Angeles, Vancouver)
-          </option>
-
-          <option value="1">
-            CET / UTC+1 (Paris, Berlin, Rome)
-          </option>
-
-          <option value="2">
-            EET / UTC+2 (Athens, Cairo, Johannesburg)
-          </option>
-
-          <option value="8">
-            AWST / UTC+8 (Singapore, Perth, Beijing)
-          </option>
-
-          <option value="10">
-            AEST / UTC+10 (Sydney, Melbourne)
-          </option>
-
-        </select>
-
-      </div>
-
-      <button
-        type="submit"
-        class="btn-submit full-width"
-      >
-        Calculate & Save Birth Chart
-      </button>
-
-    </form>
-
-
-    <div id="chartResults" style="display:none;">
-
-      <div class="big-three-container">
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            ☀️ Sun Sign
-          </div>
-
-          <div id="b3Sun" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            🌙 Moon Sign
-          </div>
-
-          <div id="b3Moon" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            🌅 Ascendant
-          </div>
-
-          <div id="b3Asc" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="chart-wheel-box">
-
-        <div id="svgWheelContainer"></div>
-
-      </div>
-
-
-      <div class="info-box">
-
-        <div
-          style="
-            font-size:0.85rem;
-            font-weight:800;
-            color:#c084fc;
-            margin-bottom:8px;
-            text-transform:uppercase;
-          "
-        >
-          Planetary Placements & Whole Sign Houses
-        </div>
-
-        <div
-          id="natalPlacementsList"
-          style="
-            display:flex;
-            flex-direction:column;
-            gap:6px;
-            font-size:0.85rem;
-          "
-        ></div>
-
-      </div>
-
-    </div>
-
-  </article>
-
-</div>
-
-
-<footer>
-  <p>Holocene Era Calendar (HE) • Automated Celestial Tracking</p>
-</footer>
-
-
-<script>
-
-/* =========================================================
-   ZODIAC
-========================================================= */
-
-const signsList = [
-
-  {
-    name:"Aries",
-    symbol:"♈",
-    energy:"bold initiative, direct action, and high drive."
-  },
-
-  {
-    name:"Taurus",
-    symbol:"♉",
-    energy:"grounded stability, patience, and tangible focus."
-  },
-
-  {
-    name:"Gemini",
-    symbol:"♊",
-    energy:"curiosity, fast-paced thinking, and adaptability."
-  },
-
-  {
-    name:"Cancer",
-    symbol:"♋",
-    energy:"emotional depth, protective care, and strong intuition."
-  },
-
-  {
-    name:"Leo",
-    symbol:"♌",
-    energy:"creative self-expression, confidence, warmth, and dramatic vitality."
-  },
-
-  {
-    name:"Virgo",
-    symbol:"♍",
-    energy:"practical refinement, analysis, and problem solving."
-  },
-
-  {
-    name:"Libra",
-    symbol:"♎",
-    energy:"harmony, diplomatic balance, and relationship focus."
-  },
-
-  {
-    name:"Scorpio",
-    symbol:"♏",
-    energy:"intensity, deep transformation, and keen instinct."
-  },
-
-  {
-    name:"Sagittarius",
-    symbol:"♐",
-    energy:"expansive optimism, big perspectives, and freedom."
-  },
-
-  {
-    name:"Capricorn",
-    symbol:"♑",
-    energy:"disciplined strategy, long-term goals, and structure."
-  },
-
-  {
-    name:"Aquarius",
-    symbol:"♒",
-    energy:"innovative vision, detachment, and unique ideas."
-  },
-
-  {
-    name:"Pisces",
-    symbol:"♓",
-    energy:"fluid imagination, empathy, and spiritual flow."
-  }
-
-];
-
-
-function getZodiacSign(degrees) {
-
-  degrees = ((degrees % 360) + 360) % 360;
-
-  return signsList[
-    Math.floor(degrees / 30)
-  ];
+  return deg;
 
 }
 
 
-/* =========================================================
-   PLANET ARCHETYPES
-========================================================= */
+function getZodiacSign(deg) {
 
-const planetArchetypes = {
+  const normalized = normalizeDegrees(deg);
 
-  Sun:
-    "Radiates vitality and shapes core identity around",
+  const index =
+    Math.floor(normalized / 30);
 
-  Moon:
-    "Influences mood, instincts, and immediate reactions with",
-
-  Mercury:
-    "Directs mental focus, logic, and communication through",
-
-  Venus:
-    "Shapes relationship dynamics, desires, and values toward",
-
-  Mars:
-    "Fuels passion, ambition, and physical energy via",
-
-  Jupiter:
-    "Magnifies luck, personal expansion, and wisdom through",
-
-  Saturn:
-    "Demands accountability, structure, and patience in",
-
-  Uranus:
-    "Sparks sudden breakthroughs and unconventional shifts through",
-
-  Neptune:
-    "Heightens spiritual sensitivity, dreams, and intuition via",
-
-  Pluto:
-    "Drives deep psychological renewal and power dynamics with"
-
-};
-
-
-/* =========================================================
-   DATE / ASTRONOMICAL CALCULATIONS
-========================================================= */
-
-function julianDate(date) {
-
-  return date.getTime() / 86400000 + 2440587.5;
+  return signsList[index];
 
 }
 
 
-/*
-   Approximate Sun ecliptic longitude.
-*/
+function degreeInSign(deg) {
 
-function sunLongitude(date) {
+  return normalizeDegrees(deg) % 30;
 
-  const jd = julianDate(date);
+}
 
-  const n = jd - 2451545.0;
 
-  const L =
-    (280.460 + 0.9856474 * n) % 360;
+function formatDegree(deg) {
+
+  return `${degreeInSign(deg).toFixed(1)}°`;
+
+}
+
+
+function daysSinceJ2000(date) {
+
+  const j2000 =
+    Date.UTC(2000, 0, 1, 12, 0, 0);
+
+  return (
+    date.getTime() - j2000
+  ) / 86400000;
+
+}
+
+
+/* ============================================================
+   SOLAR POSITION
+   Low-error solar longitude calculation
+   ============================================================ */
+
+function getSunLongitude(date) {
+
+  const d = daysSinceJ2000(date);
 
   const g =
-    (357.528 + 0.9856003 * n) *
+    normalizeDegrees(
+      357.529 + 0.98560028 * d
+    );
+
+  const q =
+    normalizeDegrees(
+      280.459 + 0.98564736 * d
+    );
+
+  const rad =
     Math.PI / 180;
-
-  const lambda =
-    L +
-    1.915 * Math.sin(g) +
-    0.020 * Math.sin(2 * g);
-
-  return ((lambda % 360) + 360) % 360;
-
-}
-
-
-/* =========================================================
-   IMPROVED LIVE MOON LONGITUDE
-========================================================= */
-
-/*
-   Simplified lunar orbital calculation using standard
-   low-precision astronomical elements.
-
-   This is substantially more reliable for zodiac sign
-   and lunar phase determination than the previous
-   Moon calculation.
-*/
-
-function moonLongitude(date) {
-
-  const jd = julianDate(date);
-
-  const d = jd - 2451543.5;
-
-
-  /* -------------------------
-     SUN ORBIT
-  ------------------------- */
-
-  const sunN = 0;
-
-  const sunW =
-    282.9404 +
-    0.0000470935 * d;
-
-  const sunM =
-    356.0470 +
-    0.9856002585 * d;
-
-  const sunL =
-    sunM +
-    sunW +
-    sunN;
-
-
-  /* -------------------------
-     MOON ORBIT
-  ------------------------- */
-
-  const moonN =
-    125.1228 -
-    0.0529538083 * d;
-
-  const moonW =
-    318.0634 +
-    0.1643573223 * d;
-
-  const moonM =
-    115.3654 +
-    13.0649929509 * d;
-
-  const moonL =
-    moonM +
-    moonW +
-    moonN;
-
-
-  /* -------------------------
-     LUNAR PERTURBATIONS
-  ------------------------- */
-
-  const Ev =
-    1.2739 *
-    Math.sin(
-      (2 * (moonL - sunL) - moonM)
-      * Math.PI / 180
-    );
-
-  const Ae =
-    0.1858 *
-    Math.sin(
-      sunM * Math.PI / 180
-    );
-
-  const A3 =
-    0.37 *
-    Math.sin(
-      sunM * Math.PI / 180
-    );
-
-  const moonMPrime =
-    moonM +
-    Ev -
-    Ae -
-    A3;
-
-  const Ec =
-    6.2886 *
-    Math.sin(
-    .app-icon-svg {
-      width: 84px;
-      height: 84px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      box-shadow: 0 0 24px rgba(192, 132, 252, 0.4);
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #f59e0b, #c084fc, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 0.5px;
-    }
-
-    .he-date {
-      color: #38bdf8;
-      font-size: 0.85rem;
-      margin-top: 4px;
-      letter-spacing: 0.4px;
-      font-weight: 700;
-    }
-
-    .tab-nav {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 4px;
-      width: 100%;
-      max-width: 800px;
-      margin-bottom: 20px;
-      background: #0f172a;
-      padding: 6px;
-      border-radius: 14px;
-      border: 1px solid #1e293b;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      padding: 8px 2px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .tab-btn * {
-      pointer-events: none;
-    }
-
-    .tab-btn .tab-icon {
-      font-size: 1.1rem;
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
-      color: #f8fafc;
-      border: 1px solid #6366f1;
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
-    }
-
-    .tab-content {
-      display: none;
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .card {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .event-card {
-      background: linear-gradient(135deg, #1e1b4b, #0f172a);
-      border: 1px solid #4338ca;
-      border-radius: 16px;
-      padding: 18px 20px;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .event-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 6px;
-    }
-
-    .badge-active {
-      background: #ef4444;
-      color: #ffffff;
-    }
-
-    .event-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #f8fafc;
-    }
-
-    .event-date {
-      font-size: 0.8rem;
-      color: #c084fc;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .event-desc {
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      line-height: 1.4;
-    }
-
-    .grid-planets {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 14px;
-      width: 100%;
-    }
-
-    .planet-card {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 14px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .planet-name {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-    }
-
-    .planet-symbol {
-      font-size: 2rem;
-      margin: 2px 0;
-    }
-
-    .planet-sign {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 8px;
-    }
-
-    .planet-degree {
-      color: #c084fc;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .planet-implication {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 0.78rem;
-      color: #cbd5e1;
-      line-height: 1.35;
-      width: 100%;
-      text-align: left;
-      margin-top: auto;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      width: fit-content;
-      margin-bottom: 12px;
-    }
-
-    .sun-tag {
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
-    }
-
-    .moon-tag {
-      background: rgba(192, 132, 252, 0.15);
-      color: #c084fc;
-    }
-
-    .chart-tag {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-    }
-
-    .card-title {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #f8fafc;
-    }
-
-    .sub-info {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-
-    .moon-visual-container {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin: 12px 0 20px 0;
-      background: #070a12;
-      padding: 16px;
-      border-radius: 14px;
-      border: 1px solid #1e293b;
-    }
-
-    .moon-phase-title {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #c084fc;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .info-box {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    @media (min-width: 500px) {
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .full-width {
-        grid-column: span 2;
-      }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .form-control {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 10px 12px;
-      color: #f8fafc;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .form-control:focus {
-      border-color: #c084fc;
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, #c084fc, #6366f1);
-      border: none;
-      color: #ffffff;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3);
-    }
-
-    .btn-submit:active {
-      transform: scale(0.98);
-    }
-
-    .big-three-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .big-three-box {
-      background: #070a12;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      padding: 12px 8px;
-      text-align: center;
-    }
-
-    .big-three-label {
-      font-size: 0.65rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .big-three-val {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #38bdf8;
-      margin-top: 4px;
-    }
-
-    .chart-wheel-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-      background: #070a12;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid #1e293b;
-      overflow: hidden;
-    }
-
-    footer {
-      margin-top: 40px;
-      color: #475569;
-      font-size: 0.75rem;
-      text-align: center;
-    }
-
-    .empty-state {
-      background: #0f172a;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      color: #64748b;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-
-  <svg class="app-icon-svg" viewBox="0 0 100 100">
-    <defs>
-      <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#f59e0b"/>
-        <stop offset="50%" stop-color="#c084fc"/>
-        <stop offset="100%" stop-color="#38bdf8"/>
-      </linearGradient>
-    </defs>
-
-    <rect
-      width="100"
-      height="100"
-      rx="22"
-      fill="#0f172a"
-      stroke="rgba(192, 132, 252, 0.4)"
-      stroke-width="2"
-    />
-
-    <circle
-      cx="50"
-      cy="50"
-      r="32"
-      stroke="url(#iconGrad)"
-      stroke-width="2.5"
-      fill="none"
-      stroke-dasharray="6,3"
-    />
-
-    <circle
-      cx="50"
-      cy="50"
-      r="12"
-      fill="url(#iconGrad)"
-    />
-
-    <path
-      d="M 50 18 A 32 32 0 0 0 82 50 A 26 26 0 0 1 50 18 Z"
-      fill="#fef08a"
-      opacity="0.85"
-    />
-
-    <circle cx="28" cy="28" r="2" fill="#ffffff"/>
-    <circle cx="74" cy="72" r="1.5" fill="#ffffff"/>
-    <circle cx="24" cy="70" r="1.2" fill="#ffffff"/>
-  </svg>
-
-  <h1>Olivia's Orbital</h1>
-
-  <!-- LIVE HEADER -->
-  <div id="heDate" class="he-date">Loading celestial data...</div>
-
-</header>
-
-
-<nav class="tab-nav">
-
-  <button class="tab-btn active" data-tab="tab-sun">
-    <span class="tab-icon">☀️</span>
-    <span>Sun</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-moon">
-    <span class="tab-icon">🌙</span>
-    <span>Moon</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-planets">
-    <span class="tab-icon">🪐</span>
-    <span>Planets</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-events">
-    <span class="tab-icon">✨</span>
-    <span>Events</span>
-  </button>
-
-  <button class="tab-btn" data-tab="tab-chart">
-    <span class="tab-icon">📜</span>
-    <span>Chart</span>
-  </button>
-
-</nav>
-
-
-<!-- SUN -->
-
-<div id="tab-sun" class="tab-content active">
-
-  <article class="card">
-
-    <span class="tag sun-tag">Sun Season</span>
-
-    <h2 id="sunName" class="card-title">---</h2>
-
-    <div id="sunDates" class="sub-info">---</div>
-
-    <div class="info-box" id="sunEnergy">---</div>
-
-  </article>
-
-</div>
-
-
-<!-- MOON -->
-
-<div id="tab-moon" class="tab-content">
-
-  <article class="card">
-
-    <span class="tag moon-tag">Lunar Transit</span>
-
-    <h2 id="moonName" class="card-title">---</h2>
-
-    <div id="moonSubInfo" class="sub-info">---</div>
-
-    <div class="moon-visual-container">
-
-      <div id="moonGraphic"></div>
-
-      <div>
-
-        <div id="moonPhaseName" class="moon-phase-title">
-          ---
-        </div>
-
-        <div
-          id="moonPhasePct"
-          style="font-size:0.95rem;color:#f8fafc;font-weight:700;margin-top:2px;"
-        >
-          ---
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="info-box" id="moonVibe">---</div>
-
-  </article>
-
-</div>
-
-
-<!-- PLANETS -->
-
-<div id="tab-planets" class="tab-content">
-
-  <div id="planetaryGrid" class="grid-planets"></div>
-
-</div>
-
-
-<!-- EVENTS -->
-
-<div id="tab-events" class="tab-content">
-
-  <div id="eventsFeed"></div>
-
-</div>
-
-
-<!-- BIRTH CHART -->
-
-<div id="tab-chart" class="tab-content">
-
-  <article class="card">
-
-    <span class="tag chart-tag">Natal Calculation</span>
-
-    <h2 class="card-title" id="chartProfileTitle">
-      Generate Birth Chart
-    </h2>
-
-    <div class="sub-info">
-      Enter exact birth details to plot your wheel chart & houses
-    </div>
-
-    <form id="chartForm" class="form-grid">
-
-      <div class="form-group full-width">
-        <label>Name / Profile</label>
-
-        <input
-          type="text"
-          id="birthName"
-          class="form-control"
-          placeholder="Olivia"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-
-        <label>Birth Date</label>
-
-        <input
-          type="date"
-          id="birthDate"
-          class="form-control"
-          required
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>Birth Time</label>
-
-        <input
-          type="time"
-          id="birthTime"
-          class="form-control"
-          value="12:00"
-          required
-        >
-
-      </div>
-
-      <div class="form-group full-width">
-
-        <label>Birth City / Timezone Shift</label>
-
-        <select id="birthTz" class="form-control">
-
-          <option value="0">
-            UTC / GMT (London, Western Europe)
-          </option>
-
-          <option value="-5">
-            EST / UTC-5 (New York, Miami, Toronto)
-          </option>
-
-          <option value="-6">
-            CST / UTC-6 (Chicago, Dallas, Mexico City)
-          </option>
-
-          <option value="-8">
-            PST / UTC-8 (Los Angeles, Vancouver)
-          </option>
-
-          <option value="1">
-            CET / UTC+1 (Paris, Berlin, Rome)
-          </option>
-
-          <option value="2">
-            EET / UTC+2 (Athens, Cairo, Johannesburg)
-          </option>
-
-          <option value="8">
-            AWST / UTC+8 (Singapore, Perth, Beijing)
-          </option>
-
-          <option value="10">
-            AEST / UTC+10 (Sydney, Melbourne)
-          </option>
-
-        </select>
-
-      </div>
-
-      <button
-        type="submit"
-        class="btn-submit full-width"
-      >
-        Calculate & Save Birth Chart
-      </button>
-
-    </form>
-
-
-    <div id="chartResults" style="display:none;">
-
-      <div class="big-three-container">
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            ☀️ Sun Sign
-          </div>
-
-          <div id="b3Sun" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            🌙 Moon Sign
-          </div>
-
-          <div id="b3Moon" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-
-        <div class="big-three-box">
-
-          <div class="big-three-label">
-            🌅 Ascendant
-          </div>
-
-          <div id="b3Asc" class="big-three-val">
-            ---
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="chart-wheel-box">
-
-        <div id="svgWheelContainer"></div>
-
-      </div>
-
-
-      <div class="info-box">
-
-        <div
-          style="
-            font-size:0.85rem;
-            font-weight:800;
-            color:#c084fc;
-            margin-bottom:8px;
-            text-transform:uppercase;
-          "
-        >
-          Planetary Placements & Whole Sign Houses
-        </div>
-
-        <div
-          id="natalPlacementsList"
-          style="
-            display:flex;
-            flex-direction:column;
-            gap:6px;
-            font-size:0.85rem;
-          "
-        ></div>
-
-      </div>
-
-    </div>
-
-  </article>
-
-</div>
-
-
-<footer>
-  <p>Holocene Era Calendar (HE) • Automated Celestial Tracking</p>
-</footer>
-
-
-<script>
-
-/* =========================================================
-   ZODIAC
-========================================================= */
-
-const signsList = [
-
-  {
-    name:"Aries",
-    symbol:"♈",
-    energy:"bold initiative, direct action, and high drive."
-  },
-
-  {
-    name:"Taurus",
-    symbol:"♉",
-    energy:"grounded stability, patience, and tangible focus."
-  },
-
-  {
-    name:"Gemini",
-    symbol:"♊",
-    energy:"curiosity, fast-paced thinking, and adaptability."
-  },
-
-  {
-    name:"Cancer",
-    symbol:"♋",
-    energy:"emotional depth, protective care, and strong intuition."
-  },
-
-  {
-    name:"Leo",
-    symbol:"♌",
-    energy:"creative self-expression, confidence, warmth, and dramatic vitality."
-  },
-
-  {
-    name:"Virgo",
-    symbol:"♍",
-    energy:"practical refinement, analysis, and problem solving."
-  },
-
-  {
-    name:"Libra",
-    symbol:"♎",
-    energy:"harmony, diplomatic balance, and relationship focus."
-  },
-
-  {
-    name:"Scorpio",
-    symbol:"♏",
-    energy:"intensity, deep transformation, and keen instinct."
-  },
-
-  {
-    name:"Sagittarius",
-    symbol:"♐",
-    energy:"expansive optimism, big perspectives, and freedom."
-  },
-
-  {
-    name:"Capricorn",
-    symbol:"♑",
-    energy:"disciplined strategy, long-term goals, and structure."
-  },
-
-  {
-    name:"Aquarius",
-    symbol:"♒",
-    energy:"innovative vision, detachment, and unique ideas."
-  },
-
-  {
-    name:"Pisces",
-    symbol:"♓",
-    energy:"fluid imagination, empathy, and spiritual flow."
-  }
-
-];
-
-
-function getZodiacSign(degrees) {
-
-  degrees = ((degrees % 360) + 360) % 360;
-
-  return signsList[
-    Math.floor(degrees / 30)
-  ];
-
-}
-
-
-/* =========================================================
-   PLANET ARCHETYPES
-========================================================= */
-
-const planetArchetypes = {
-
-  Sun:
-    "Radiates vitality and shapes core identity around",
-
-  Moon:
-    "Influences mood, instincts, and immediate reactions with",
-
-  Mercury:
-    "Directs mental focus, logic, and communication through",
-
-  Venus:
-    "Shapes relationship dynamics, desires, and values toward",
-
-  Mars:
-    "Fuels passion, ambition, and physical energy via",
-
-  Jupiter:
-    "Magnifies luck, personal expansion, and wisdom through",
-
-  Saturn:
-    "Demands accountability, structure, and patience in",
-
-  Uranus:
-    "Sparks sudden breakthroughs and unconventional shifts through",
-
-  Neptune:
-    "Heightens spiritual sensitivity, dreams, and intuition via",
-
-  Pluto:
-    "Drives deep psychological renewal and power dynamics with"
-
-};
-
-
-/* =========================================================
-   DATE / ASTRONOMICAL CALCULATIONS
-========================================================= */
-
-function julianDate(date) {
-
-  return date.getTime() / 86400000 + 2440587.5;
-
-}
-
-
-/*
-   Approximate Sun ecliptic longitude.
-
-   Accuracy is more than sufficient for zodiac-sign
-   determination.
-*/
-
-function sunLongitude(date) {
-
-  const jd = julianDate(date);
-
-  const n = jd - 2451545.0;
 
   const L =
-    (280.460 + 0.9856474 * n) % 360;
+    q +
+    1.915 * Math.sin(g * rad) +
+    0.020 * Math.sin(2 * g * rad);
 
-  const g =
-    (357.528 + 0.9856003 * n) *
-    Math.PI / 180;
-
-  const lambda =
-    L +
-    1.915 * Math.sin(g) +
-    0.020 * Math.sin(2 * g);
-
-  return ((lambda % 360) + 360) % 360;
+  return normalizeDegrees(L);
 
 }
 
 
-/*
-   Approximate Moon ecliptic longitude.
-*/
+/* ============================================================
+   MOON POSITION
+   Simplified lunar orbital model
+   ============================================================ */
 
-function moonLongitude(date) {
+function getMoonLongitude(date) {
 
-  const jd = julianDate(date);
+  const d = daysSinceJ2000(date);
 
-  const d = jd - 2451543.5;
+  const rad = Math.PI / 180;
 
   const N =
-    125.1228 -
-    0.0529538083 * d;
+    normalizeDegrees(
+      125.1228 - 0.0529538083 * d
+    );
 
   const i = 5.1454;
 
   const w =
-    318.0634 +
-    0.1643573223 * d;
+    normalizeDegrees(
+      318.0634 + 0.1643573223 * d
+    );
 
-  const e = 0.054;
+  const a = 60.2666;
+
+  const e = 0.0549;
 
   const M =
-    115.3654 +
-    13.0649929509 * d;
+    normalizeDegrees(
+      115.3654 + 13.0649929509 * d
+    );
 
-  const Mrad =
-    M * Math.PI / 180;
+  let E = M + e * 180 / Math.PI * Math.sin(M * rad);
 
-  let E =
-    M +
-    (180 / Math.PI) *
-    e *
-    Math.sin(Mrad) *
-    (1 + e * Math.cos(Mrad));
+  for (let j = 0; j < 5; j++) {
 
-  E *= Math.PI / 180;
+    E =
+      E -
+      (E - e * 180 / Math.PI * Math.sin(E * rad) - M) /
+      (1 - e * Math.cos(E * rad));
+
+  }
 
   const xv =
-    Math.cos(E) - e;
+    a *
+    (Math.cos(E * rad) - e);
 
   const yv =
+    a *
     Math.sqrt(1 - e * e) *
-    Math.sin(E);
+    Math.sin(E * rad);
 
   const v =
-    Math.atan2(yv, xv);
+    Math.atan2(yv, xv) / rad;
 
   const r =
     Math.sqrt(xv * xv + yv * yv);
 
-  const Nrad =
-    N * Math.PI / 180;
-
-  const irad =
-    i * Math.PI / 180;
-
-  const wrad =
-    (w * Math.PI / 180) + v;
-
   const xh =
     r *
     (
-      Math.cos(Nrad) *
-      Math.cos(wrad) -
-      Math.sin(Nrad) *
-      Math.sin(wrad) *
-      Math.cos(irad)
+      Math.cos(N * rad) *
+      Math.cos((v + w) * rad) -
+      Math.sin(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
     );
 
   const yh =
     r *
     (
-      Math.sin(Nrad) *
-      Math.cos(wrad) +
-      Math.cos(Nrad) *
-      Math.sin(wrad) *
-      Math.cos(irad)
+      Math.sin(N * rad) *
+      Math.cos((v + w) * rad) +
+      Math.cos(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
     );
 
-  return (
-    Math.atan2(yh, xh) *
-    180 / Math.PI +
-    180
-  ) % 360;
+  const zh =
+    r *
+    Math.sin((v + w) * rad) *
+    Math.sin(i * rad);
+
+  let lon =
+    Math.atan2(yh, xh) / rad;
+
+  /*
+   * Lunar perturbations improve the zodiac position.
+   */
+
+  const sunLon =
+    getSunLongitude(date);
+
+  const moonMean =
+    normalizeDegrees(M);
+
+  const sunMean =
+    normalizeDegrees(
+      356.0470 + 0.9856002585 * d
+    );
+
+  lon +=
+    -1.274 * Math.sin(
+      (moonMean - 2 * lon) * rad
+    );
+
+  lon +=
+    0.658 * Math.sin(
+      (2 * lon) * rad
+    );
+
+  lon +=
+    -0.186 * Math.sin(
+      sunMean * rad
+    );
+
+  lon +=
+    -0.059 * Math.sin(
+      (2 * moonMean - 2 * lon) * rad
+    );
+
+  lon +=
+    -0.057 * Math.sin(
+      (moonMean - 2 * lon + sunMean) * rad
+    );
+
+  lon +=
+    0.053 * Math.sin(
+      (moonMean + 2 * lon) * rad
+    );
+
+  return normalizeDegrees(lon);
 
 }
 
 
-/* =========================================================
+/* ============================================================
    MOON PHASE
-========================================================= */
+   ============================================================ */
 
-function moonPhaseData(date) {
+function getMoonPhase(date) {
 
-  const sun = sunLongitude(date);
+  const sun =
+    getSunLongitude(date);
 
-  const moon = moonLongitude(date);
+  const moon =
+    getMoonLongitude(date);
 
-  let elongation =
-    ((moon - sun) % 360 + 360) % 360;
+  const elongation =
+    normalizeDegrees(moon - sun);
+
+  let phaseName;
+
+  if (elongation < 22.5 ||
+      elongation >= 337.5) {
+
+    phaseName = "New Moon";
+
+  } else if (elongation < 67.5) {
+
+    phaseName = "Waxing Crescent";
+
+  } else if (elongation < 112.5) {
+
+    phaseName = "First Quarter";
+
+  } else if (elongation < 157.5) {
+
+    phaseName = "Waxing Gibbous";
+
+  } else if (elongation < 202.5) {
+
+    phaseName = "Full Moon";
+
+  } else if (elongation < 247.5) {
+
+    phaseName = "Waning Gibbous";
+
+  } else if (elongation < 292.5) {
+
+    phaseName = "Last Quarter";
+
+  } else {
+
+    phaseName = "Waning Crescent";
+
+  }
 
   const illumination =
     (1 - Math.cos(elongation * Math.PI / 180)) / 2;
 
-  let name;
-
-  if (elongation < 22.5 || elongation >= 337.5) {
-    name = "New Moon";
-  }
-
-  else if (elongation < 67.5) {
-    name = "Waxing Crescent";
-  }
-
-  else if (elongation < 112.5) {
-    name = "First Quarter";
-  }
-
-  else if (elongation < 157.5) {
-    name = "Waxing Gibbous";
-  }
-
-  else if (elongation < 202.5) {
-    name = "Full Moon";
-  }
-
-  else if (elongation < 247.5) {
-    name = "Waning Gibbous";
-  }
-
-  else if (elongation < 292.5) {
-    name = "Last Quarter";
-  }
-
-  else {
-    name = "Waning Crescent";
-  }
-
   return {
-    name,
-    illumination: illumination * 100,
-    angle: elongation
+
+    elongation,
+    illumination:
+      illumination * 100,
+    phaseName
+
   };
 
 }
 
 
-/* =========================================================
-   LIVE HEADER
-========================================================= */
+/* ============================================================
+   PLANETARY POSITIONS
+   Approximate heliocentric orbital model
+   ============================================================ */
 
-function updateHeader() {
+const orbitalElements = {
 
-  const now = new Date();
+  Mercury: {
+    N: 48.3313,
+    Ndot: 3.24587E-5,
+    i: 7.0047,
+    idot: 5.00E-8,
+    w: 29.1241,
+    wdot: 1.01444E-5,
+    a: 0.387098,
+    adot: 0,
+    e: 0.205635,
+    edot: 5.59E-10,
+    M: 168.6562,
+    Mdot: 4.0923344368
+  },
 
-  const sun =
-    getZodiacSign(
-      sunLongitude(now)
+  Venus: {
+    N: 76.6799,
+    Ndot: 2.46590E-5,
+    i: 3.3946,
+    idot: 2.75E-8,
+    w: 54.8910,
+    wdot: 1.38374E-5,
+    a: 0.723330,
+    adot: 0,
+    e: 0.006773,
+    edot: -1.302E-9,
+    M: 48.0052,
+    Mdot: 1.6021302244
+  },
+
+  Mars: {
+    N: 49.5574,
+    Ndot: 2.11081E-5,
+    i: 1.8497,
+    idot: -1.78E-8,
+    w: 286.5016,
+    wdot: 2.92961E-5,
+    a: 1.523688,
+    adot: 0,
+    e: 0.093405,
+    edot: 2.516E-9,
+    M: 18.6021,
+    Mdot: 0.5240207766
+  },
+
+  Jupiter: {
+    N: 100.4542,
+    Ndot: 2.76854E-5,
+    i: 1.3030,
+    idot: -1.557E-7,
+    w: 273.8777,
+    wdot: 1.64505E-5,
+    a: 5.20256,
+    adot: 0,
+    e: 0.048498,
+    edot: 4.469E-9,
+    M: 19.8950,
+    Mdot: 0.0830853001
+  },
+
+  Saturn: {
+    N: 113.6634,
+    Ndot: 2.38980E-5,
+    i: 2.4886,
+    idot: -1.081E-7,
+    w: 339.3939,
+    wdot: 2.97661E-5,
+    a: 9.55475,
+    adot: 0,
+    e: 0.055546,
+    edot: -9.499E-9,
+    M: 316.9670,
+    Mdot: 0.0334442282
+  },
+
+  Uranus: {
+    N: 74.0005,
+    Ndot: 1.3978E-5,
+    i: 0.7733,
+    idot: 1.9E-8,
+    w: 96.6612,
+    wdot: 3.0565E-5,
+    a: 19.18171,
+    adot: -1.55E-8,
+    e: 0.047318,
+    edot: 7.45E-9,
+    M: 142.5905,
+    Mdot: 0.011725806
+  },
+
+  Neptune: {
+    N: 131.7806,
+    Ndot: 3.0173E-5,
+    i: 1.77,
+    idot: -2.55E-7,
+    w: 272.8461,
+    wdot: -6.027E-6,
+    a: 30.05826,
+    adot: 3.313E-8,
+    e: 0.008606,
+    edot: 2.15E-9,
+    M: 260.2471,
+    Mdot: 0.005995147
+  },
+
+  Pluto: {
+    N: 110.30347,
+    Ndot: 0,
+    i: 17.14175,
+    idot: 0,
+    w: 113.76329,
+    wdot: 0,
+    a: 39.48168677,
+    adot: 0,
+    e: 0.24880766,
+    edot: 0,
+    M: 14.53,
+    Mdot: 0.0039757
+  }
+
+};
+
+
+function calculatePlanetPosition(name, date) {
+
+  const p =
+    orbitalElements[name];
+
+  const d =
+    daysSinceJ2000(date);
+
+  const rad =
+    Math.PI / 180;
+
+  const N =
+    p.N + p.Ndot * d;
+
+  const i =
+    p.i + p.idot * d;
+
+  const w =
+    p.w + p.wdot * d;
+
+  const a =
+    p.a + p.adot * d;
+
+  const e =
+    p.e + p.edot * d;
+
+  const M =
+    normalizeDegrees(
+      p.M + p.Mdot * d
     );
 
-  const moon =
-    moonPhaseData(now);
+  let E =
+    M + e * 180 / Math.PI * Math.sin(M * rad);
 
-  const holoceneYear =
-    now.getFullYear() + 10000;
+  for (let j = 0; j < 8; j++) {
 
-  document.getElementById("heDate").textContent =
-    `☀️ Sun in ${sun.name} · 🌙 ${moon.name} · HE ${holoceneYear}`;
+    E =
+      E -
+      (
+        E -
+        e * 180 / Math.PI * Math.sin(E * rad) -
+        M
+      ) /
+      (
+        1 -
+        e * Math.cos(E * rad)
+      );
+
+  }
+
+  const xv =
+    a *
+    (
+      Math.cos(E * rad) - e
+    );
+
+  const yv =
+    a *
+    Math.sqrt(1 - e * e) *
+    Math.sin(E * rad);
+
+  const v =
+    Math.atan2(yv, xv) / rad;
+
+  const r =
+    Math.sqrt(xv * xv + yv * yv);
+
+  const xh =
+    r *
+    (
+      Math.cos(N * rad) *
+      Math.cos((v + w) * rad) -
+      Math.sin(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
+    );
+
+  const yh =
+    r *
+    (
+      Math.sin(N * rad) *
+      Math.cos((v + w) * rad) +
+      Math.cos(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
+    );
+
+  return {
+    longitude:
+      normalizeDegrees(
+        Math.atan2(yh, xh) / rad
+      ),
+    radius: r
+  };
 
 }
 
 
-/* =========================================================
-   SUN TAB
-========================================================= */
+/* ============================================================
+   EARTH-CENTRIC PLANET LONGITUDES
+   ============================================================ */
 
-function renderSun() {
+function getPlanetLongitude(name, date) {
 
-  const now = new Date();
+  if (name === "Sun") {
+    return getSunLongitude(date);
+  }
 
-  const longitude =
-    sunLongitude(now);
+  if (name === "Moon") {
+    return getMoonLongitude(date);
+  }
 
-  const sign =
-    getZodiacSign(longitude);
+  const earth =
+    getEarthPosition(date);
 
-  const degree =
-    longitude % 30;
+  const planet =
+    calculatePlanetPosition(name, date);
 
-  document.getElementById("sunName").textContent =
-    `${sign.symbol} Sun in ${sign.name}`;
+  const x =
+    planet.x - earth.x;
 
-  document.getElementById("sunDates").textContent =
-    `${degree.toFixed(1)}° ${sign.name}`;
+  const y =
+    planet.y - earth.y;
 
-  document.getElementById("sunEnergy").textContent =
-    `The Sun in ${sign.name} emphasizes ${sign.energy}`;
-
-}
-
-
-/* =========================================================
-   MOON TAB
-========================================================= */
-
-function renderMoon() {
-
-  const now = new Date();
-
-  const moonLon =
-    moonLongitude(now);
-
-  const sign =
-    getZodiacSign(moonLon);
-
-  const phase =
-    moonPhaseData(now);
-
-  const degree =
-    moonLon % 30;
-
-  document.getElementById("moonName").textContent =
-    `${sign.symbol} Moon in ${sign.name}`;
-
-  document.getElementById("moonSubInfo").textContent =
-    `${degree.toFixed(1)}° ${sign.name}`;
-
-  document.getElementById("moonPhaseName").textContent =
-    phase.name;
-
-  document.getElementById("moonPhasePct").textContent =
-    `${phase.illumination.toFixed(0)}% illuminated`;
-
-  document.getElementById("moonVibe").textContent =
-    `${phase.name} emphasizes reflection, rhythm, and emotional awareness. ` +
-    `With the Moon in ${sign.name}, moods and instincts tend toward ` +
-    `${sign.energy}`;
-
-  renderMoonSVG(
-    phase.angle,
-    phase.illumination
+  return normalizeDegrees(
+    Math.atan2(y, x) *
+    180 / Math.PI
   );
 
 }
 
 
-/* =========================================================
-   MOON SVG
-========================================================= */
+function getEarthPosition(date) {
 
-function renderMoonSVG(angle, illumination) {
+  const d =
+    daysSinceJ2000(date);
 
-  const size = 70;
+  const rad =
+    Math.PI / 180;
+
+  const g =
+    normalizeDegrees(
+      357.529 + 0.98560028 * d
+    );
+
+  const q =
+    normalizeDegrees(
+      280.459 + 0.98564736 * d
+    );
+
+  const L =
+    q +
+    1.915 * Math.sin(g * rad) +
+    0.020 * Math.sin(2 * g * rad);
+
+  const lon =
+    normalizeDegrees(L) * rad;
+
+  const r =
+    1 -
+    0.0167 *
+    Math.cos(g * rad);
+
+  return {
+    x: r * Math.cos(lon),
+    y: r * Math.sin(lon)
+  };
+
+}
+
+
+/*
+ * The orbital-element positions above are heliocentric
+ * ecliptic coordinates. Convert them into geocentric
+ * longitude by subtracting Earth's position.
+ */
+function calculateGeocentricPlanet(name, date) {
+
+  const p =
+    orbitalElements[name];
+
+  const d =
+    daysSinceJ2000(date);
+
+  const rad =
+    Math.PI / 180;
+
+  const N =
+    p.N + p.Ndot * d;
+
+  const i =
+    p.i + p.idot * d;
+
+  const w =
+    p.w + p.wdot * d;
+
+  const a =
+    p.a + p.adot * d;
+
+  const e =
+    p.e + p.edot * d;
+
+  const M =
+    normalizeDegrees(
+      p.M + p.Mdot * d
+    );
+
+  let E =
+    M + e * 180 / Math.PI * Math.sin(M * rad);
+
+  for (let k = 0; k < 8; k++) {
+
+    E =
+      E -
+      (
+        E -
+        e * 180 / Math.PI *
+        Math.sin(E * rad) -
+        M
+      ) /
+      (
+        1 -
+        e * Math.cos(E * rad)
+      );
+
+  }
+
+  const xv =
+    a *
+    (Math.cos(E * rad) - e);
+
+  const yv =
+    a *
+    Math.sqrt(1 - e * e) *
+    Math.sin(E * rad);
+
+  const v =
+    Math.atan2(yv, xv) / rad;
+
+  const r =
+    Math.sqrt(xv * xv + yv * yv);
+
+  const xh =
+    r *
+    (
+      Math.cos(N * rad) *
+      Math.cos((v + w) * rad) -
+      Math.sin(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
+    );
+
+  const yh =
+    r *
+    (
+      Math.sin(N * rad) *
+      Math.cos((v + w) * rad) +
+      Math.cos(N * rad) *
+      Math.sin((v + w) * rad) *
+      Math.cos(i * rad)
+    );
+
+  const earth =
+    getEarthPosition(date);
+
+  return normalizeDegrees(
+    Math.atan2(
+      yh - earth.y,
+      xh - earth.x
+    ) / rad
+  );
+
+}
+
+
+/* ============================================================
+   SUN TAB
+   ============================================================ */
+
+function renderSun(date) {
+
+  const longitude =
+    getSunLongitude(date);
+
+  const sign =
+    getZodiacSign(longitude);
+
+  document.getElementById("sunName").textContent =
+    `${sign.symbol} ${sign.name}`;
+
+  document.getElementById("sunSymbol").textContent =
+    sign.symbol;
+
+  document.getElementById("sunDegree").textContent =
+    `${formatDegree(longitude)} ${sign.name}`;
+
+  document.getElementById("sunDates").textContent =
+    `The Sun is currently moving through ${sign.name}.`;
+
+  document.getElementById("sunEnergy").innerHTML =
+    `<strong>Sun in ${sign.name}</strong><br><br>
+     The solar emphasis today is on ${sign.energy}
+     The Sun describes the central field of vitality,
+     identity and conscious expression, so ${sign.name}
+     colours the general tone of the day.`;
+
+}
+
+
+/* ============================================================
+   MOON TAB
+   ============================================================ */
+
+function renderMoon(date) {
+
+  const longitude =
+    getMoonLongitude(date);
+
+  const sign =
+    getZodiacSign(longitude);
+
+  const phase =
+    getMoonPhase(date);
+
+  document.getElementById("moonName").textContent =
+    `${sign.symbol} Moon in ${sign.name}`;
+
+  document.getElementById("moonSubInfo").textContent =
+    `${formatDegree(longitude)} ${sign.name} • Lunar transit`;
+
+  document.getElementById("moonPhaseName").textContent =
+    phase.phaseName;
+
+  document.getElementById("moonPhasePct").textContent =
+    `${phase.illumination.toFixed(0)}% illuminated`;
+
+  renderMoonSVG(
+    phase.elongation
+  );
+
+  document.getElementById("moonVibe").innerHTML =
+    `<strong>Moon in ${sign.name}</strong><br><br>
+     The Moon describes instinct, mood and immediate
+     emotional response. In ${sign.name}, the emotional
+     atmosphere tends toward ${sign.energy}
+     <br><br>
+     <strong>${phase.phaseName}</strong> adds the lunar
+     theme of ${
+       phase.phaseName === "New Moon"
+       ? "resetting, beginning and inward focus."
+       : phase.phaseName === "Full Moon"
+       ? "culmination, visibility and emotional illumination."
+       : phase.phaseName === "Waxing Crescent"
+       ? "emergence, experimentation and building momentum."
+       : phase.phaseName === "First Quarter"
+       ? "decision, friction and active commitment."
+       : phase.phaseName === "Waxing Gibbous"
+       ? "refinement, development and approaching culmination."
+       : phase.phaseName === "Waning Gibbous"
+       ? "integration, reflection and sharing what has been learned."
+       : phase.phaseName === "Last Quarter"
+       ? "release, reassessment and clearing."
+       : "rest, retreat and preparation for renewal."
+     }`;
+
+}
+
+
+function renderMoonSVG(phaseAngle) {
+
+  const phi =
+    normalizeDegrees(phaseAngle);
 
   const r = 28;
 
@@ -3188,67 +1844,98 @@ function renderMoonSVG(angle, illumination) {
 
   const cy = 35;
 
-  const normalized =
-    ((angle % 360) + 360) % 360;
+  const illumination =
+    (1 - Math.cos(phi * Math.PI / 180)) / 2;
 
-  const waxing =
-    normalized < 180;
+  let moon;
 
-  const fraction =
-    Math.abs(
-      Math.cos(
-        normalized * Math.PI / 180
-      )
-    );
+  if (
+    phi < 2 ||
+    phi > 358
+  ) {
 
-  const rx =
-    Math.max(
-      1,
-      r * fraction
-    );
+    moon = `
+      <circle
+        cx="${cx}"
+        cy="${cy}"
+        r="${r}"
+        fill="#111827"
+        stroke="#c084fc"
+        stroke-width="1.5"
+      />
+    `;
 
-  let path;
+  } else if (
+    Math.abs(phi - 180) < 2
+  ) {
 
-  if (waxing) {
-
-    path =
-      `M ${cx} ${cy-r}
-       A ${r} ${r} 0 0 0 ${cx} ${cy+r}
-       A ${rx} ${r} 0 0 1 ${cx} ${cy-r}
-       Z`;
+    moon = `
+      <circle
+        cx="${cx}"
+        cy="${cy}"
+        r="${r}"
+        fill="#fef08a"
+      />
+    `;
 
   } else {
 
-    path =
-      `M ${cx} ${cy-r}
-       A ${r} ${r} 0 0 1 ${cx} ${cy+r}
-       A ${rx} ${r} 0 0 0 ${cx} ${cy-r}
-       Z`;
+    const waxing =
+      phi < 180;
+
+    const sweep =
+      waxing ? 1 : 0;
+
+    const rx =
+      Math.abs(
+        r *
+        Math.cos(
+          phi * Math.PI / 180
+        )
+      );
+
+    moon = `
+      <path
+        d="
+          M ${cx} ${cy-r}
+          A ${r} ${r} 0 0 ${sweep}
+            ${cx} ${cy+r}
+          A ${rx} ${r} 0 0 ${waxing ? 0 : 1}
+            ${cx} ${cy-r}
+          Z
+        "
+        fill="#fef08a"
+      />
+
+      <circle
+        cx="${cx}"
+        cy="${cy}"
+        r="${r}"
+        fill="none"
+        stroke="#c084fc"
+        stroke-width="1.5"
+      />
+    `;
 
   }
 
   document.getElementById("moonGraphic").innerHTML = `
 
     <svg
-      width="${size}"
-      height="${size}"
+      width="70"
+      height="70"
       viewBox="0 0 70 70"
       aria-label="Moon phase"
     >
 
-      <circle
-        cx="35"
-        cy="35"
-        r="28"
-        fill="#111827"
-        stroke="#475569"
-        stroke-width="1"
+      <rect
+        width="70"
+        height="70"
+        rx="12"
+        fill="#0f172a"
       />
 
-      <path
-        d="${path}"
-        fill="#fef08a"
-      />
+      ${moon}
 
     </svg>
 
@@ -3257,143 +1944,58 @@ function renderMoonSVG(angle, illumination) {
 }
 
 
-/* =========================================================
-   PLANETS
-========================================================= */
+/* ============================================================
+   PLANETS TAB
+   ============================================================ */
 
-/*
-   Approximate orbital elements.
+function renderPlanets(date) {
 
-   These are used to produce useful current zodiac
-   positions without requiring an external API.
-*/
-
-const planetData = {
-
-  Mercury: {
-    symbol:"☿",
-    period:87.969,
-    base:252.25084,
-    implication:"Mercury's position colours communication, thought, learning, and mental movement."
-  },
-
-  Venus: {
-    symbol:"♀",
-    period:224.701,
-    base:181.97973,
-    implication:"Venus colours attraction, aesthetics, affection, pleasure, and values."
-  },
-
-  Mars: {
-    symbol:"♂",
-    period:686.980,
-    base:355.433,
-    implication:"Mars colours drive, desire, assertion, physical energy, and conflict."
-  },
-
-  Jupiter: {
-    symbol:"♃",
-    period:4332.589,
-    base:34.351,
-    implication:"Jupiter expands whatever area of life it touches, bringing growth and perspective."
-  },
-
-  Saturn: {
-    symbol:"♄",
-    period:10759.22,
-    base:50.077,
-    implication:"Saturn emphasizes discipline, boundaries, responsibility, and long-term development."
-  },
-
-  Uranus: {
-    symbol:"♅",
-    period:30688.5,
-    base:314.055,
-    implication:"Uranus brings disruption, innovation, independence, and sudden change."
-  },
-
-  Neptune: {
-    symbol:"♆",
-    period:60182,
-    base:304.348,
-    implication:"Neptune emphasizes imagination, dreams, ideals, sensitivity, and dissolution of boundaries."
-  },
-
-  Pluto: {
-    symbol:"♇",
-    period:90560,
-    base:238.929,
-    implication:"Pluto emphasizes transformation, depth, power, and psychological renewal."
-  }
-
-};
-
-
-function planetLongitude(name, date) {
-
-  const data =
-    planetData[name];
-
-  const jd =
-    julianDate(date);
-
-  const days =
-    jd - 2451545.0;
-
-  let longitude =
-    data.base +
-    (days / data.period) * 360;
-
-  return (
-    ((longitude % 360) + 360) % 360
-  );
-
-}
-
-
-function renderPlanets() {
-
-  const now = new Date();
+  const planets = [
+    "Sun",
+    "Moon",
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune",
+    "Pluto"
+  ];
 
   const grid =
-    document.getElementById("planetaryGrid");
+    document.getElementById(
+      "planetaryGrid"
+    );
 
   grid.innerHTML = "";
 
-  const planets = [
-    {
-      name:"Sun",
-      symbol:"☀️",
-      longitude:sunLongitude(now),
-      implication:"The Sun describes vitality, identity, creativity, and the central direction of expression."
-    },
+  planets.forEach(name => {
 
-    {
-      name:"Moon",
-      symbol:"🌙",
-      longitude:moonLongitude(now),
-      implication:"The Moon describes instinct, emotional rhythm, mood, memory, and immediate response."
-    },
+    let longitude;
 
-    ...Object.entries(planetData).map(
-      ([name,data]) => ({
-        name,
-        symbol:data.symbol,
-        longitude:planetLongitude(name, now),
-        implication:data.implication
-      })
-    )
-  ];
+    if (name === "Sun") {
 
-  planets.forEach(planet => {
+      longitude =
+        getSunLongitude(date);
+
+    } else if (name === "Moon") {
+
+      longitude =
+        getMoonLongitude(date);
+
+    } else {
+
+      longitude =
+        calculateGeocentricPlanet(
+          name,
+          date
+        );
+
+    }
 
     const sign =
-      getZodiacSign(
-        planet.longitude
-      );
-
-    const degree =
-      planet.longitude % 30;
+      getZodiacSign(longitude);
 
     const card =
       document.createElement("div");
@@ -3404,11 +2006,11 @@ function renderPlanets() {
     card.innerHTML = `
 
       <div class="planet-name">
-        ${planet.name}
+        ${name}
       </div>
 
       <div class="planet-symbol">
-        ${planet.symbol}
+        ${planetData[name].symbol}
       </div>
 
       <div class="planet-sign">
@@ -3416,15 +2018,19 @@ function renderPlanets() {
       </div>
 
       <div class="planet-degree">
-        ${degree.toFixed(1)}°
+        ${formatDegree(longitude)}
       </div>
 
       <div class="planet-implication">
-        ${planet.implication}
-        ${planet.name !== "Sun" && planet.name !== "Moon"
-          ? ` Currently expressed through ${sign.name}.`
-          : ""
-        }
+
+        <strong>${name} in ${sign.name}</strong><br><br>
+
+        ${capitalizeFirst(
+          planetData[name].description
+        )}
+        through themes of
+        ${sign.energy}
+
       </div>
 
     `;
@@ -3436,104 +2042,121 @@ function renderPlanets() {
 }
 
 
-/* =========================================================
+function capitalizeFirst(text) {
+
+  return text.charAt(0).toUpperCase() +
+    text.slice(1);
+
+}
+
+
+/* ============================================================
    EVENTS
-========================================================= */
+   ============================================================ */
 
 const cosmicEventsData = [
 
   {
-    name:"Annular Solar Eclipse",
-    date:"2026-02-17",
-    sign:"Aquarius",
-    desc:"Solar alignment creates a ring of fire around the Moon in Aquarius."
+    name: "Annular Solar Eclipse",
+    date: "2026-02-17",
+    sign: "Aquarius",
+    desc:
+      "Annular solar eclipse visible along a path across parts of the world."
   },
 
   {
-    name:"Total Lunar Eclipse",
-    date:"2026-03-03",
-    sign:"Virgo",
-    desc:"A Blood Moon eclipse fully obscuring the lunar surface in Virgo."
+    name: "Total Lunar Eclipse",
+    date: "2026-03-03",
+    sign: "Virgo",
+    desc:
+      "A total lunar eclipse produces a Blood Moon."
   },
 
   {
-    name:"March Equinox",
-    date:"2026-03-20",
-    sign:"Aries",
-    desc:"Day and night are of approximately equal duration as the Sun enters Aries."
+    name: "March Equinox",
+    date: "2026-03-20",
+    sign: "Aries",
+    desc:
+      "The Sun crosses the celestial equator, marking the astronomical equinox."
   },
 
   {
-    name:"June Solstice",
-    date:"2026-06-21",
-    sign:"Cancer",
-    desc:"Solstice transition as the Sun reaches its seasonal extreme."
+    name: "June Solstice",
+    date: "2026-06-21",
+    sign: "Cancer",
+    desc:
+      "The June solstice marks the northern summer / southern winter turning point."
   },
 
   {
-    name:"Total Solar Eclipse",
-    date:"2026-08-12",
-    sign:"Leo",
-    desc:"A total solar eclipse occurs as the Moon passes directly between Earth and the Sun."
+    name: "Total Solar Eclipse",
+    date: "2026-08-12",
+    sign: "Leo",
+    desc:
+      "A total solar eclipse occurs as the Moon passes directly between Earth and the Sun."
   },
 
   {
-    name:"Perseid Meteor Shower Peak",
-    date:"2026-08-12",
-    sign:"Cosmic",
-    desc:"The Perseid meteor shower reaches its annual peak."
+    name: "Perseid Meteor Shower Peak",
+    date: "2026-08-12",
+    sign: "Cosmic",
+    desc:
+      "The Perseid meteor shower reaches its annual peak around this date."
   },
 
   {
-    name:"Partial Lunar Eclipse",
-    date:"2026-08-28",
-    sign:"Pisces",
-    desc:"Earth's shadow crosses part of the Moon."
+    name: "Partial Lunar Eclipse",
+    date: "2026-08-28",
+    sign: "Pisces",
+    desc:
+      "A partial lunar eclipse occurs during the Full Moon."
   },
 
   {
-    name:"September Equinox",
-    date:"2026-09-22",
-    sign:"Libra",
-    desc:"The Sun crosses the celestial equator heading south."
+    name: "September Equinox",
+    date: "2026-09-22",
+    sign: "Libra",
+    desc:
+      "The Sun crosses the celestial equator heading south, marking the astronomical equinox."
   },
 
   {
-    name:"Geminid Meteor Shower Peak",
-    date:"2026-12-13",
-    sign:"Cosmic",
-    desc:"The Geminid meteor shower reaches peak activity."
+    name: "Geminid Meteor Shower Peak",
+    date: "2026-12-13",
+    sign: "Cosmic",
+    desc:
+      "The Geminid meteor shower reaches its annual peak."
   },
 
   {
-    name:"December Solstice",
-    date:"2026-12-21",
-    sign:"Capricorn",
-    desc:"The December solstice marks the astronomical beginning of winter in the Northern Hemisphere."
+    name: "December Solstice",
+    date: "2026-12-21",
+    sign: "Capricorn",
+    desc:
+      "The December solstice marks the northern winter / southern summer turning point."
   }
 
 ];
 
 
-function renderEvents() {
+function renderEvents(date) {
 
   const feed =
-    document.getElementById("eventsFeed");
+    document.getElementById(
+      "eventsFeed"
+    );
 
   const today =
-    new Date();
-
-  const todayString =
-    today.toISOString().slice(0,10);
+    localDateString(date);
 
   /*
-     Only events happening today are shown.
-  */
+   * ONLY CURRENT EVENTS.
+   * Past and future events are deliberately excluded.
+   */
 
   const active =
     cosmicEventsData.filter(
-      event =>
-        event.date === todayString
+      event => event.date === today
     );
 
   if (!active.length) {
@@ -3541,7 +2164,17 @@ function renderEvents() {
     feed.innerHTML = `
 
       <div class="empty-state">
-        No celestial events are active today.
+
+        <div style="
+          font-size:2rem;
+          margin-bottom:8px;
+        ">
+          ✨
+        </div>
+
+        No major recorded celestial events
+        are occurring today.
+
       </div>
 
     `;
@@ -3563,7 +2196,7 @@ function renderEvents() {
     card.innerHTML = `
 
       <span class="event-badge badge-active">
-        Active Today
+        ACTIVE TODAY
       </span>
 
       <div class="event-name">
@@ -3571,7 +2204,8 @@ function renderEvents() {
       </div>
 
       <div class="event-date">
-        ${event.date} · ${event.sign}
+        ${formatReadableDate(event.date)}
+        • ${event.sign}
       </div>
 
       <div class="event-desc">
@@ -3587,323 +2221,602 @@ function renderEvents() {
 }
 
 
-/* =========================================================
-   TABS
-========================================================= */
+/* ============================================================
+   HEADER
+   ============================================================ */
 
-function setupTabListeners() {
+function renderHeader(date) {
 
-  const buttons =
-    document.querySelectorAll(".tab-btn");
-
-  buttons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      function() {
-
-        const targetId =
-          this.getAttribute("data-tab");
-
-        document
-          .querySelectorAll(".tab-content")
-          .forEach(panel =>
-            panel.classList.remove("active")
-          );
-
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach(btn =>
-            btn.classList.remove("active")
-          );
-
-        const target =
-          document.getElementById(targetId);
-
-        if (target) {
-          target.classList.add("active");
-        }
-
-        this.classList.add("active");
-
-      }
+  const sun =
+    getZodiacSign(
+      getSunLongitude(date)
     );
 
-  });
+  const moon =
+    getZodiacSign(
+      getMoonLongitude(date)
+    );
+
+  const phase =
+    getMoonPhase(date);
+
+  /*
+   * Holocene Era:
+   * HE = Gregorian year + 10,000.
+   */
+
+  const heYear =
+    date.getFullYear() + 10000;
+
+  document.getElementById(
+    "mainHeading"
+  ).textContent =
+    `${sun.name} • ${phase.phaseName} • HE ${heYear}`;
+
+  document.getElementById(
+    "heDate"
+  ).textContent =
+    `${sun.symbol} Sun in ${sun.name} • ${moon.symbol} Moon in ${moon.name}`;
+
+  document.getElementById(
+    "headerSub"
+  ).textContent =
+    formatLongDate(date);
 
 }
 
 
-/* =========================================================
-   BASIC NATAL CHART
-========================================================= */
+function formatLongDate(date) {
 
-function calculateNatalChart() {
+  return new Intl.DateTimeFormat(
+    undefined,
+    {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(date);
 
-  const name =
-    document.getElementById("birthName").value;
+}
+
+
+function formatReadableDate(dateString) {
 
   const date =
-    document.getElementById("birthDate").value;
-
-  const time =
-    document.getElementById("birthTime").value;
-
-  const tz =
-    Number(
-      document.getElementById("birthTz").value
-    );
-
-  if (!date || !time) {
-    return;
-  }
-
-  /*
-     Convert local birth time to approximate UTC.
-  */
-
-  const local =
     new Date(
-      `${date}T${time}:00`
+      dateString + "T12:00:00"
     );
 
-  const utc =
-    new Date(
-      local.getTime() -
-      tz * 60 * 60 * 1000
-    );
+  return new Intl.DateTimeFormat(
+    undefined,
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(date);
 
-  const sun =
-    sunLongitude(utc);
+}
 
-  const moon =
-    moonLongitude(utc);
 
-  /*
-     Simplified ascendant approximation.
-     It is intentionally presented as an approximate
-     calculation rather than pretending this is a
-     professional ephemeris.
-  */
+function localDateString(date) {
+
+  const y =
+    date.getFullYear();
+
+  const m =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const d =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  return `${y}-${m}-${d}`;
+
+}
+
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+function setupTabListeners() {
+
+  document
+    .querySelectorAll(".tab-btn")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        function(e) {
+
+          e.preventDefault();
+
+          const targetId =
+            this.getAttribute(
+              "data-tab"
+            );
+
+          document
+            .querySelectorAll(
+              ".tab-content"
+            )
+            .forEach(panel => {
+
+              panel.classList.remove(
+                "active"
+              );
+
+            });
+
+          document
+            .querySelectorAll(
+              ".tab-btn"
+            )
+            .forEach(btn => {
+
+              btn.classList.remove(
+                "active"
+              );
+
+            });
+
+          const target =
+            document.getElementById(
+              targetId
+            );
+
+          if (target) {
+
+            target.classList.add(
+              "active"
+            );
+
+          }
+
+          this.classList.add(
+            "active"
+          );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* ============================================================
+   BIRTH CHART
+   ============================================================ */
+
+function calculateAscendant(
+  date,
+  timeString,
+  timezoneOffset
+) {
+
+  const parts =
+    timeString.split(":");
 
   const hours =
-    utc.getUTCHours() +
-    utc.getUTCMinutes() / 60;
+    Number(parts[0]) +
+    Number(parts[1]) / 60 -
+    timezoneOffset;
 
-  const ascLon =
-    (
-      sun +
-      hours * 15 +
-      90
-    ) % 360;
+  const utcDate =
+    new Date(
+      Date.UTC(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        0,
+        0,
+        0
+      )
+    );
 
-  const sunSign =
-    getZodiacSign(sun);
+  const d =
+    daysSinceJ2000(
+      new Date(
+        utcDate.getTime() +
+        hours * 3600000
+      )
+    );
 
-  const moonSign =
-    getZodiacSign(moon);
+  const T =
+    d / 36525;
 
-  const ascSign =
-    getZodiacSign(ascLon);
+  /*
+   * Approximate Greenwich Mean Sidereal Time.
+   */
 
-  document.getElementById("chartProfileTitle").textContent =
-    `${name}'s Birth Chart`;
+  let gmst =
+    280.46061837 +
+    360.98564736629 * d +
+    0.000387933 * T * T -
+    T * T * T / 38710000;
 
-  document.getElementById("b3Sun").textContent =
-    `${sunSign.symbol} ${sunSign.name}`;
+  gmst =
+    normalizeDegrees(gmst);
 
-  document.getElementById("b3Moon").textContent =
-    `${moonSign.symbol} ${moonSign.name}`;
+  /*
+   * Approximate longitude for London/UTC.
+   * Birth form supplies timezone only, not geographic
+   * longitude, so use the conventional central meridian.
+   */
 
-  document.getElementById("b3Asc").textContent =
-    `${ascSign.symbol} ${ascSign.name}`;
+  const longitude =
+    timezoneOffset * 15;
 
-  const placements =
-    document.getElementById("natalPlacementsList");
+  const lst =
+    normalizeDegrees(
+      gmst + longitude
+    );
 
-  placements.innerHTML = "";
+  const obliquity =
+    23.4393;
 
-  const natalPlanets = [
+  const lat =
+    51.5;
 
-    ["Sun", sun],
+  const rad =
+    Math.PI / 180;
 
-    ["Moon", moon],
+  const e =
+    obliquity * rad;
 
-    ...Object.keys(planetData).map(
-      name => [
-        name,
-        planetLongitude(name, utc)
-      ]
-    )
+  const phi =
+    lat * rad;
 
-  ];
+  const theta =
+    lst * rad;
 
-  natalPlanets.forEach(
-    ([planet, longitude]) => {
+  let asc =
+    Math.atan2(
+      -Math.cos(theta),
+      Math.sin(theta) * Math.cos(e) +
+      Math.tan(phi) * Math.sin(e)
+    ) / rad;
 
-      const sign =
-        getZodiacSign(longitude);
+  asc =
+    normalizeDegrees(
+      asc + 180
+    );
 
-      const row =
-        document.createElement("div");
+  return asc;
 
-      row.style.padding =
-        "6px 8px";
+}
 
-      row.style.background =
-        "#0f172a";
 
-      row.style.borderRadius =
-        "6px";
+function renderBirthChart() {
 
-      row.textContent =
-        `${planet}: ${sign.symbol} ${sign.name} ` +
-        `${(longitude % 30).toFixed(1)}°`;
+  const form =
+    document.getElementById(
+      "chartForm"
+    );
 
-      placements.appendChild(row);
+  form.addEventListener(
+    "submit",
+    function(e) {
+
+      e.preventDefault();
+
+      const name =
+        document.getElementById(
+          "birthName"
+        ).value.trim();
+
+      const dateString =
+        document.getElementById(
+          "birthDate"
+        ).value;
+
+      const time =
+        document.getElementById(
+          "birthTime"
+        ).value;
+
+      const tz =
+        Number(
+          document.getElementById(
+            "birthTz"
+          ).value
+        );
+
+      if (!dateString) return;
+
+      const date =
+        new Date(
+          dateString + "T12:00:00"
+        );
+
+      const sun =
+        getSunLongitude(date);
+
+      const moon =
+        getMoonLongitude(date);
+
+      const asc =
+        calculateAscendant(
+          date,
+          time,
+          tz
+        );
+
+      const sunSign =
+        getZodiacSign(sun);
+
+      const moonSign =
+        getZodiacSign(moon);
+
+      const ascSign =
+        getZodiacSign(asc);
+
+      document.getElementById(
+        "chartProfileTitle"
+      ).textContent =
+        `${name || "Profile"}'s Birth Chart`;
+
+      document.getElementById(
+        "b3Sun"
+      ).textContent =
+        `${sunSign.symbol} ${sunSign.name}`;
+
+      document.getElementById(
+        "b3Moon"
+      ).textContent =
+        `${moonSign.symbol} ${moonSign.name}`;
+
+      document.getElementById(
+        "b3Asc"
+      ).textContent =
+        `${ascSign.symbol} ${ascSign.name}`;
+
+      const placements =
+        document.getElementById(
+          "natalPlacementsList"
+        );
+
+      placements.innerHTML = "";
+
+      const natalPlanets = [
+        ["Sun", sun],
+        ["Moon", moon]
+      ];
+
+      [
+        "Mercury",
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune",
+        "Pluto"
+      ].forEach(
+        planet => {
+
+          natalPlanets.push(
+            [
+              planet,
+              calculateGeocentricPlanet(
+                planet,
+                date
+              )
+            ]
+          );
+
+        }
+      );
+
+      natalPlanets.forEach(
+        ([planet, longitude]) => {
+
+          const sign =
+            getZodiacSign(longitude);
+
+          const house =
+            (
+              Math.floor(
+                normalizeDegrees(
+                  longitude - asc
+                ) / 30
+              ) + 1
+            );
+
+          const row =
+            document.createElement(
+              "div"
+            );
+
+          row.style.cssText = `
+            padding:8px 10px;
+            border-bottom:1px solid #1e293b;
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+          `;
+
+          row.innerHTML = `
+
+            <span>
+              ${planetData[planet].symbol}
+              <strong>${planet}</strong>
+            </span>
+
+            <span style="color:#c084fc;">
+              ${sign.symbol}
+              ${sign.name}
+              ${formatDegree(longitude)}
+            </span>
+
+            <span style="color:#64748b;">
+              H${house}
+            </span>
+
+          `;
+
+          placements.appendChild(
+            row
+          );
+
+        }
+      );
+
+      drawChartWheel(
+        sun,
+        moon,
+        asc,
+        natalPlanets
+      );
+
+      document.getElementById(
+        "chartResults"
+      ).style.display = "block";
+
+      localStorage.setItem(
+        "oliviaOrbitalBirthChart",
+        JSON.stringify({
+          name,
+          date: dateString,
+          time,
+          tz
+        })
+      );
 
     }
   );
 
-  renderNatalWheel(
-    sun,
-    moon,
-    ascLon
-  );
-
-  document.getElementById("chartResults").style.display =
-    "block";
-
-  localStorage.setItem(
-    "oliviaOrbitalBirthChart",
-    JSON.stringify({
-      name,
-      date,
-      time,
-      tz
-    })
-  );
-
 }
 
 
-/* =========================================================
-   NATAL WHEEL
-========================================================= */
+/* ============================================================
+   CHART WHEEL
+   ============================================================ */
 
-function renderNatalWheel(
+function drawChartWheel(
   sun,
   moon,
-  asc
+  asc,
+  placements
 ) {
 
   const size = 330;
 
-  const cx = 165;
+  const cx = size / 2;
 
-  const cy = 165;
+  const cy = size / 2;
 
-  const outer = 145;
+  const outerR = 145;
 
-  const inner = 105;
+  const innerR = 105;
 
   let svg = `
 
     <svg
       width="${size}"
       height="${size}"
-      viewBox="0 0 330 330"
+      viewBox="0 0 ${size} ${size}"
+      xmlns="http://www.w3.org/2000/svg"
     >
 
       <circle
         cx="${cx}"
         cy="${cy}"
-        r="${outer}"
-        fill="none"
-        stroke="#475569"
+        r="${outerR}"
+        fill="#0f172a"
+        stroke="#4338ca"
         stroke-width="2"
       />
 
       <circle
         cx="${cx}"
         cy="${cy}"
-        r="${inner}"
-        fill="#0f172a"
-        stroke="#334155"
+        r="${innerR}"
+        fill="#070a12"
+        stroke="#1e293b"
         stroke-width="1"
       />
 
   `;
 
-  for (
-    let i = 0;
-    i < 12;
-    i++
-  ) {
+  /*
+   * Zodiac ring
+   */
+
+  signsList.forEach(
+    (sign, index) => {
+
+      const angle =
+        index * 30 - 90;
+
+      const rad =
+        angle * Math.PI / 180;
+
+      const x =
+        cx +
+        Math.cos(rad) *
+        126;
+
+      const y =
+        cy +
+        Math.sin(rad) *
+        126;
+
+      svg += `
+
+        <text
+          x="${x}"
+          y="${y}"
+          fill="#c084fc"
+          font-size="17"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          ${sign.symbol}
+        </text>
+
+      `;
+
+    }
+  );
+
+  /*
+   * House lines
+   */
+
+  for (let i = 0; i < 12; i++) {
 
     const angle =
-      (i * 30 - 90) *
-      Math.PI / 180;
+      normalizeDegrees(
+        asc + i * 30
+      ) - 90;
+
+    const rad =
+      angle * Math.PI / 180;
 
     const x =
       cx +
-      Math.cos(angle) *
-      125;
+      Math.cos(rad) *
+      outerR;
 
     const y =
       cy +
-      Math.sin(angle) *
-      125;
-
-    const sign =
-      signsList[i];
-
-    svg += `
-
-      <text
-        x="${x}"
-        y="${y}"
-        fill="#c084fc"
-        font-size="18"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        ${sign.symbol}
-      </text>
-
-    `;
-
-    const lineAngle =
-      (i * 30 - 90) *
-      Math.PI / 180;
-
-    const x1 =
-      cx +
-      Math.cos(lineAngle) *
-      inner;
-
-    const y1 =
-      cy +
-      Math.sin(lineAngle) *
-      inner;
-
-    const x2 =
-      cx +
-      Math.cos(lineAngle) *
-      outer;
-
-    const y2 =
-      cy +
-      Math.sin(lineAngle) *
-      outer;
+      Math.sin(rad) *
+      outerR;
 
     svg += `
 
       <line
-        x1="${x1}"
-        y1="${y1}"
-        x2="${x2}"
-        y2="${y2}"
+        x1="${cx}"
+        y1="${cy}"
+        x2="${x}"
+        y2="${y}"
         stroke="#1e293b"
         stroke-width="1"
       />
@@ -3912,66 +2825,54 @@ function renderNatalWheel(
 
   }
 
+  /*
+   * Planet markers
+   */
 
-  function point(
-    longitude,
-    symbol,
-    label
-  ) {
+  placements.forEach(
+    ([planet, longitude]) => {
 
-    const angle =
-      (longitude - 90) *
-      Math.PI / 180;
+      const angle =
+        longitude - 90;
 
-    const x =
-      cx +
-      Math.cos(angle) *
-      82;
+      const rad =
+        angle * Math.PI / 180;
 
-    const y =
-      cy +
-      Math.sin(angle) *
-      82;
+      const x =
+        cx +
+        Math.cos(rad) *
+        88;
 
-    return `
+      const y =
+        cy +
+        Math.sin(rad) *
+        88;
 
-      <text
-        x="${x}"
-        y="${y}"
-        fill="#f8fafc"
-        font-size="18"
-        font-weight="700"
-        text-anchor="middle"
-        dominant-baseline="middle"
-      >
-        ${symbol}
-      </text>
+      svg += `
 
-      <title>
-        ${label}
-      </title>
+        <circle
+          cx="${x}"
+          cy="${y}"
+          r="10"
+          fill="#1e1b4b"
+          stroke="#6366f1"
+          stroke-width="1"
+        />
 
-    `;
+        <text
+          x="${x}"
+          y="${y}"
+          fill="#f8fafc"
+          font-size="10"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          ${planetData[planet].symbol}
+        </text>
 
-  }
+      `;
 
-
-  svg += point(
-    sun,
-    "☀",
-    "Sun"
-  );
-
-  svg += point(
-    moon,
-    "☽",
-    "Moon"
-  );
-
-  svg += point(
-    asc,
-    "↑",
-    "Ascendant"
+    }
   );
 
   svg += `
@@ -3979,9 +2880,19 @@ function renderNatalWheel(
       <circle
         cx="${cx}"
         cy="${cy}"
-        r="3"
+        r="4"
         fill="#c084fc"
       />
+
+      <text
+        x="${cx}"
+        y="${cy + 25}"
+        fill="#64748b"
+        font-size="8"
+        text-anchor="middle"
+      >
+        WHOLE SIGN
+      </text>
 
     </svg>
 
@@ -3994,20 +2905,18 @@ function renderNatalWheel(
 }
 
 
-/* =========================================================
-   RESTORE SAVED CHART
-========================================================= */
+/* ============================================================
+   RESTORE SAVED BIRTH CHART
+   ============================================================ */
 
-function restoreSavedChart() {
+function restoreBirthChart() {
 
   const saved =
     localStorage.getItem(
       "oliviaOrbitalBirthChart"
     );
 
-  if (!saved) {
-    return;
-  }
+  if (!saved) return;
 
   try {
 
@@ -4032,12 +2941,14 @@ function restoreSavedChart() {
     document.getElementById(
       "birthTz"
     ).value =
-      data.tz ?? 0;
+      String(
+        data.tz ?? 0
+      );
 
   } catch (error) {
 
-    console.error(
-      "Could not restore saved chart:",
+    console.warn(
+      "Could not restore saved chart.",
       error
     );
 
@@ -4046,82 +2957,52 @@ function restoreSavedChart() {
 }
 
 
-/* =========================================================
+/* ============================================================
    INITIALISE APP
-========================================================= */
+   ============================================================ */
 
 function initialiseApp() {
 
+  const today =
+    new Date();
+
   setupTabListeners();
 
-  updateHeader();
+  renderHeader(today);
 
-  renderSun();
+  renderSun(today);
 
-  renderMoon();
+  renderMoon(today);
 
-  renderPlanets();
+  renderPlanets(today);
 
-  renderEvents();
+  renderEvents(today);
 
-  restoreSavedChart();
+  renderBirthChart();
+
+  restoreBirthChart();
 
 }
 
 
-/* =========================================================
-   BIRTH FORM
-========================================================= */
+/*
+ * Start once DOM exists.
+ */
 
-document
-  .getElementById("chartForm")
-  .addEventListener(
-    "submit",
-    function(event) {
+if (
+  document.readyState === "loading"
+) {
 
-      event.preventDefault();
-
-      calculateNatalChart();
-
-    }
+  document.addEventListener(
+    "DOMContentLoaded",
+    initialiseApp
   );
 
+} else {
 
-/* =========================================================
-   START APP
-========================================================= */
+  initialiseApp();
 
-/*
-   The script is already at the bottom of <body>, so all
-   HTML elements exist by the time this code runs.
-*/
-
-initialiseApp();
-
-
-/*
-   Keep the celestial data fresh.
-
-   The Moon moves quickly, so we refresh the live
-   celestial information every 5 minutes.
-*/
-
-setInterval(
-  function() {
-
-    updateHeader();
-
-    renderSun();
-
-    renderMoon();
-
-    renderPlanets();
-
-    renderEvents();
-
-  },
-  5 * 60 * 1000
-);
+}
 
 </script>
 
